@@ -1,0 +1,79 @@
+name: Generate Flutter App
+
+on:
+  repository_dispatch:
+    types: [generate-app]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.0"
+          channel: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Print received payload
+        run: |
+          echo "Received payload:"
+          echo "Job ID: ${{ github.event.client_payload.jobId }}"
+          echo "Store ID: ${{ github.event.client_payload.storeId }}"
+          echo "Store Name: ${{ github.event.client_payload.storeName }}"
+          echo "Logo URL: ${{ github.event.client_payload.logoUrl }}"
+
+      - name: Download logo
+        if: ${{ github.event.client_payload.logoUrl != '' }}
+        run: |
+          mkdir -p assets/images
+          curl -L "${{ github.event.client_payload.logoUrl }}" -o assets/images/store_logo.png
+
+      - name: Update app name and logo
+        run: |
+          # Update app name in relevant files
+          sed -i 's/app_name: "Flutter Demo"/app_name: "${{ github.event.client_payload.storeName }}"/g' android/app/src/main/AndroidManifest.xml || echo "Could not update Android app name"
+          sed -i 's/<string name="app_name">Flutter Demo<\/string>/<string name="app_name">${{ github.event.client_payload.storeName }}<\/string>/g' android/app/src/main/res/values/strings.xml || echo "Could not update strings.xml"
+
+          # You would also update the iOS app name in a similar way
+          # This is simplified for the example
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          TEMPLATE_GENERATOR_TOKEN: ${{ secrets.TEMPLATE_GENERATOR_TOKEN }}
+        with:
+          tag_name: store-${{ github.event.client_payload.storeId }}-${{ github.run_number }}
+          release_name: ${{ github.event.client_payload.storeName }} App
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          TEMPLATE_GENERATOR_TOKEN: ${{ secrets.TEMPLATE_GENERATOR_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-release.apk
+          asset_name: ${{ github.event.client_payload.storeName }}-app.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: Notify completion
+        run: |
+          DOWNLOAD_URL="${{ steps.upload_release_asset.outputs.browser_download_url || 'https://github.com/wassimD28/flutter-template/releases/latest' }}"
+          curl -X POST ${{ github.event.client_payload.callbackUrl }} \
+          -H "Content-Type: application/json" \
+          -d '{
+            "jobId": "${{ github.event.client_payload.jobId }}",
+            "status": "COMPLETED",
+            "downloadUrl": "'"$DOWNLOAD_URL"'"
+          }'
