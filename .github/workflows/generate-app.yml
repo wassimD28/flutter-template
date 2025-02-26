@@ -36,12 +36,21 @@ jobs:
 
       - name: Update app name and logo
         run: |
-          # Update app name in relevant files
-          sed -i 's/app_name: "Flutter Demo"/app_name: "${{ github.event.client_payload.storeName }}"/g' android/app/src/main/AndroidManifest.xml || echo "Could not update Android app name"
-          sed -i 's/<string name="app_name">Flutter Demo<\/string>/<string name="app_name">${{ github.event.client_payload.storeName }}<\/string>/g' android/app/src/main/res/values/strings.xml || echo "Could not update strings.xml"
+          # Update Android app name in AndroidManifest.xml
+          sed -i 's/android:label="basic_mobile_app"/android:label="${{ github.event.client_payload.storeName }}"/g' android/app/src/main/AndroidManifest.xml || echo "Could not update Android app name"
 
-          # You would also update the iOS app name in a similar way
-          # This is simplified for the example
+          # Update Android app name in strings.xml
+          sed -i 's/<string name="app_name">basic_mobile_app<\/string>/<string name="app_name">${{ github.event.client_payload.storeName }}<\/string>/g' android/app/src/main/res/values/strings.xml || echo "Could not update strings.xml"
+
+          # Update iOS app name in Info.plist (assuming the current value is "basic_mobile_app")
+          sed -i 's/<string>basic_mobile_app<\/string>/<string>${{ github.event.client_payload.storeName }}<\/string>/g' ios/Runner/Info.plist || echo "Could not update iOS app name"
+
+          # Update the app icon:
+          # (This example assumes you use a custom script or flutter_launcher_icons configuration.)
+          # Here we simply copy the downloaded logo to your designated icons folder.
+          cp assets/images/store_logo.png assets/icons/app_icon.png || echo "Could not update app icon"
+          dart run flutter_launcher_icons:main
+
 
       - name: Build APK
         run: flutter build apk --release

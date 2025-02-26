@@ -24,6 +24,7 @@ android {
         applicationId = "com.example.basic_mobile_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdkVersion 21  // <-- Ensure this line is present (21 or another version you require)
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
