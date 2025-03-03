@@ -12,9 +12,12 @@ class AppTheme {
   // Text colors
   static const Color textPrimaryColor = Color(0xFFFFFFFF); // Primary text
   static const Color textSecondaryColor = Color(0xFFC2C2C2); // Secondary text
-  static const Color textLightColor =
-      Color(0xFF000000); // Light text (for dark backgrounds)
+  static const Color textLightColor = Color(0xFF000000); // Light text (for dark backgrounds)
 
+  // input fields
+  static const Color inputBackgroundColor = Color.fromARGB(255, 241, 241, 241);
+  static const Color inputTextColor = Color.fromARGB(255, 116, 116, 116);
+  static const double inputBorderRadius = 30;
   // Success, warning, error colors
   static const Color successColor = Color(0xFF4CAF50);
   static const Color warningColor = Color(0xFFFFC107);
@@ -35,7 +38,7 @@ class AppTheme {
     color: textPrimaryColor,
     fontFamily: 'RedditSans',
   );
-  
+
   // Heading styles - medium
   static const TextStyle headingMedium = TextStyle(
     fontSize: 22.0,
@@ -43,7 +46,7 @@ class AppTheme {
     color: textPrimaryColor,
     fontFamily: 'RedditSans',
   );
-  
+
   // Heading styles - small
   static const TextStyle headingSmall = TextStyle(
     fontSize: 18.0,
@@ -58,42 +61,19 @@ class AppTheme {
     color: textPrimaryColor,
     fontFamily: 'RedditSans',
   );
-  
+
   // Body styles - medium
   static const TextStyle bodyMedium = TextStyle(
     fontSize: 14.0,
     color: textPrimaryColor,
     fontFamily: 'RedditSans',
   );
-  
+
   // Body styles - small
   static const TextStyle bodySmall = TextStyle(
     fontSize: 12.0,
     color: textSecondaryColor,
     fontFamily: 'RedditSans',
-  );
-
-  // Button styles
-  static const ButtonStyle primaryButtonStyle = ButtonStyle(
-    padding: WidgetStatePropertyAll<EdgeInsets>(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 12)),
-    backgroundColor: WidgetStatePropertyAll<Color>(primaryColor),
-    foregroundColor: WidgetStatePropertyAll<Color>(textLightColor),
-    shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)))),
-  );
-
-  static const ButtonStyle secondaryButtonStyle = ButtonStyle(
-    padding: WidgetStatePropertyAll<EdgeInsets>(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 12)),
-    backgroundColor: WidgetStatePropertyAll<Color>(Colors.transparent),
-    foregroundColor: WidgetStatePropertyAll<Color>(primaryColor),
-    shape:
-        WidgetStatePropertyAll<RoundedRectangleBorder>(RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      side: BorderSide(color: primaryColor, width: 1.5),
-    )),
   );
 
   // Spacing constants
@@ -125,47 +105,4 @@ class AppTheme {
       offset: Offset(0, 4),
     ),
   ];
-
-  // Theme data that can be used directly with MaterialApp
-  static ThemeData get lightTheme {
-    return ThemeData(
-      primaryColor: primaryColor,
-      colorScheme: const ColorScheme.light(
-        primary: primaryColor,
-        secondary: secondaryColor,
-        error: errorColor,
-        surface: backgroundColor,
-      ),
-      scaffoldBackgroundColor: backgroundColor,
-      fontFamily: 'RedditSans',
-      textTheme: const TextTheme(
-        displayLarge: headingLarge,
-        displayMedium: headingMedium,
-        displaySmall: headingSmall,
-        bodyLarge: bodyLarge,
-        bodyMedium: bodyMedium,
-        bodySmall: bodySmall,
-      ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: primaryColor,
-        foregroundColor: textLightColor,
-      ),
-      elevatedButtonTheme: const ElevatedButtonThemeData(
-        style: primaryButtonStyle,
-      ),
-      outlinedButtonTheme: const OutlinedButtonThemeData(
-        style: secondaryButtonStyle,
-      ),
-      inputDecorationTheme: const InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(borderRadiusMedium)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(borderRadiusMedium)),
-          borderSide: BorderSide(color: primaryColor, width: 2),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      ),
-    );
-  }
 }

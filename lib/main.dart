@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'view/screen/on_boarding.dart';
+import 'package:basic_mobile_app/core/routes/routes.dart';
+import 'package:basic_mobile_app/core/routes/pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnBoarding(),
+      initialRoute: AppRoutes.onBoarding, // Define the starting screen
+      getPages: AppPages.pages, // Register all route definitions
     );
   }
 }

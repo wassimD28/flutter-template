@@ -1,6 +1,8 @@
+import 'package:basic_mobile_app/core/routes/routes.dart';
 import 'package:basic_mobile_app/view/widget/on_boarding_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:basic_mobile_app/core/constant/image_assets.dart';
+import 'package:get/get.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -144,7 +146,10 @@ class OnBoarding extends StatelessWidget {
 
                       // Get Started button
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Navigate to the login screen when button is pressed
+                          Get.toNamed(AppRoutes.login);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
