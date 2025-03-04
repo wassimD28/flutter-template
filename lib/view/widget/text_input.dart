@@ -23,26 +23,32 @@ class CustomTextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        // This ensures that when focused the label always floats
-        labelText: labelText,
-        labelStyle: const TextStyle(color: AppTheme.inputTextColor),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.inputBorderRadius),
-          borderSide: BorderSide.none,
-        ),
-        suffixIcon: suffixIcon,
-        // Adjust the top padding to ensure the floating label stays within the input
-        contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
-        fillColor: AppTheme.inputBackgroundColor,
-        filled: true,
-      ),
-      validator: validator,
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-    );
+    return Container(
+        decoration: BoxDecoration(
+            color: AppTheme.inputBackgroundColor,
+            borderRadius: BorderRadius.circular(AppTheme.globalBorderRadius)),
+        padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+        child: TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+              // This ensures that when focused the label always floats
+              labelText: labelText,
+              labelStyle: const TextStyle(color: AppTheme.inputTextColor),
+              border: OutlineInputBorder(
+                borderRadius:
+                    BorderRadius.circular(AppTheme.globalBorderRadius),
+                borderSide: BorderSide.none,
+              ),
+              suffixIcon: suffixIcon,
+              isDense: true,
+              floatingLabelStyle: const TextStyle(
+                color: AppTheme.inputTextColor,
+                fontSize: 14,
+              )),
+          validator: validator,
+          obscureText: obscureText,
+          keyboardType: keyboardType,
+          textInputAction: textInputAction,
+        ));
   }
 }

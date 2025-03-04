@@ -10,14 +10,15 @@ class AppTheme {
   static const Color backgroundColor = Color(0xFF000000); // Background color
 
   // Text colors
-  static const Color textPrimaryColor = Color(0xFFFFFFFF); // Primary text
+  static const Color textPrimaryColor = Color(0xFF000000); // Primary text
   static const Color textSecondaryColor = Color(0xFFC2C2C2); // Secondary text
-  static const Color textLightColor = Color(0xFF000000); // Light text (for dark backgrounds)
+  static const Color textLightColor =
+      Color(0xFF000000); // Light text (for dark backgrounds)
 
   // input fields
   static const Color inputBackgroundColor = Color.fromARGB(255, 241, 241, 241);
-  static const Color inputTextColor = Color.fromARGB(255, 116, 116, 116);
-  static const double inputBorderRadius = 30;
+  static const Color inputTextColor = Color.fromARGB(255, 129, 129, 129);
+  static const double globalBorderRadius = 50;
   // Success, warning, error colors
   static const Color successColor = Color(0xFF4CAF50);
   static const Color warningColor = Color(0xFFFFC107);
@@ -34,7 +35,7 @@ class AppTheme {
   // Heading styles - large
   static const TextStyle headingLarge = TextStyle(
     fontSize: 28.0,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w900,
     color: textPrimaryColor,
     fontFamily: 'RedditSans',
   );
@@ -83,11 +84,6 @@ class AppTheme {
   static const double spacingL = 24.0;
   static const double spacingXL = 32.0;
   static const double spacingXXL = 48.0;
-
-  // Border radius
-  static const double borderRadiusSmall = 4.0;
-  static const double borderRadiusMedium = 8.0;
-  static const double borderRadiusLarge = 16.0;
 
   // Shadow
   static const List<BoxShadow> lightShadow = [

@@ -13,23 +13,27 @@ class LoginScreen extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: controller.formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                const SizedBox(height: 24),
+                const Text(
+                  'Login',
+                  style: AppTheme.headingLarge,
+                ),
                 // App logo or header image could go here
                 const SizedBox(height: 24),
 
                 // Email Input
                 CustomTextInput(
                   controller: controller.emailController,
-                  labelText: 'Email',
+                  labelText: 'Email Address',
                   validator: controller.validateEmail,
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -60,8 +64,8 @@ class LoginScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(AppTheme.inputBorderRadius),
+                          borderRadius: BorderRadius.circular(
+                              AppTheme.globalBorderRadius),
                         ),
                         backgroundColor: AppTheme.backgroundColor,
                       ),
@@ -77,25 +81,15 @@ class LoginScreen extends StatelessWidget {
 
                 // Forgot Password and Register links
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        // Navigate to forgot password screen
-                      },
-                      child: const Text('Forgot Password?'),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text("Don't have an account?"),
                     TextButton(
                       onPressed: () {
-                        // Navigate to register screen
+                        // Navigate to forgot password screen
                       },
-                      child: const Text('Register'),
+                      child: const Text('Create One'),
                     ),
                   ],
                 ),
