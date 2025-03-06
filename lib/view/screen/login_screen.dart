@@ -1,5 +1,6 @@
 import 'package:basic_mobile_app/core/routes/routes.dart';
 import 'package:basic_mobile_app/core/theme/color_extension.dart';
+import 'package:basic_mobile_app/view/widget/styled_buttons.dart';
 import 'package:basic_mobile_app/view/widget/theme_toggle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -83,7 +84,13 @@ class LoginScreen extends StatelessWidget {
                             ),
                     )),
                 const SizedBox(height: 16),
-
+                const Text("Register").secondaryButton(
+                  context,
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.register);
+                  },
+                  isLoading: controller.isLoading.value,
+                ),
                 // Forgot Password and Register links
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,

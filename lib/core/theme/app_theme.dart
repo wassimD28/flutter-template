@@ -1,3 +1,4 @@
+import 'package:basic_mobile_app/core/constant/ui_constants.dart';
 import 'package:flutter/material.dart';
 import '../constant/theme_constants.dart';
 import 'color_extension.dart';
@@ -7,7 +8,7 @@ class AppTheme {
   static const lightColors = AppColorsData(
     background: Color(0xFFFFFFFF),
     foreground: Color(0xFF000000),
-    primary: Color(0xFF0070F3),
+    primary: Color(0xFF000000),
     primaryForeground: Color(0xFFFFFFFF),
     secondary: Color(0xFFF5F5F5),
     secondaryForeground: Color(0xFF111111),
@@ -18,7 +19,7 @@ class AppTheme {
     card: Color(0xFFFFFFFF),
     cardForeground: Color(0xFF000000),
     border: Color(0xFFE5E5E5),
-    input: Color(0xFFE5E5E5),
+    input: Color(0xFFF4F4F4),
     destructive: Color(0xFFFF0000),
     destructiveForeground: Color(0xFFFFFFFF),
   );
@@ -42,22 +43,22 @@ class AppTheme {
     destructive: Color(0xFFFF0000),
     destructiveForeground: Color(0xFFFFFFFF),
   );
-  
+
   // Light theme
   static ThemeData light() {
     return _createTheme(lightColors);
   }
-  
+
   // Dark theme
   static ThemeData dark() {
     return _createTheme(darkColors);
   }
-  
+
   // Helper method to create ThemeData
   static ThemeData _createTheme(AppColorsData colors) {
     return ThemeData(
-      brightness: colors.background.computeLuminance() > 0.5 
-          ? Brightness.light 
+      brightness: colors.background.computeLuminance() > 0.5
+          ? Brightness.light
           : Brightness.dark,
       primaryColor: colors.primary,
       scaffoldBackgroundColor: colors.background,
@@ -72,16 +73,65 @@ class AppTheme {
         onSecondary: colors.secondaryForeground,
         onSurface: colors.foreground,
         onError: colors.destructiveForeground,
-        brightness: colors.background.computeLuminance() > 0.5 
-            ? Brightness.light 
+        brightness: colors.background.computeLuminance() > 0.5
+            ? Brightness.light
             : Brightness.dark,
       ),
+
+      // global input decoration theme
       inputDecorationTheme: InputDecorationTheme(
         fillColor: colors.input,
+        filled: true,
         border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+            borderSide: BorderSide.none),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
           borderSide: BorderSide(color: colors.border),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+          borderSide: BorderSide(color: colors.border),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+          borderSide: BorderSide(color: colors.destructive),
+        ),
       ),
+
+      // Add global button themes
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical: UIConstants.paddingMedium,
+            horizontal: UIConstants.paddingLarge,
+          ),
+        ),
+      ),
+
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+          ),
+        ),
+      ),
+
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical: UIConstants.paddingMedium,
+            horizontal: UIConstants.paddingLarge,
+          ),
+        ),
+      ),
+
       extensions: [
         AppColorExtension.fromAppColorsData(colors),
       ],

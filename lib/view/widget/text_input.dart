@@ -1,3 +1,4 @@
+import 'package:basic_mobile_app/core/constant/ui_constants.dart';
 import 'package:flutter/material.dart';
 import '../../core/theme/color_extension.dart';
 
@@ -29,14 +30,14 @@ class CustomTextInput extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             color: colors?.input ?? Theme.of(context).disabledColor,
-            borderRadius: BorderRadius.circular(10)),
+            borderRadius: BorderRadius.circular(UIConstants.borderRadiusMedium),
+        ),
         padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
         child: TextFormField(
           controller: controller,
           decoration: InputDecoration(
             labelText: labelText,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+            border: const OutlineInputBorder(
               borderSide: BorderSide.none,
             ),
             suffixIcon: suffixIcon,
