@@ -1,25 +1,36 @@
+import 'package:basic_mobile_app/core/routes/pages.dart';
+import 'package:basic_mobile_app/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:basic_mobile_app/core/routes/routes.dart';
-import 'package:basic_mobile_app/core/routes/pages.dart';
+import 'core/di/dependency_injection.dart';
+import 'core/theme/theme_controller.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize dependencies
+  await DependencyInjection.init();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: AppRoutes.onBoarding, // Define the starting screen
-      getPages: AppPages.pages, // Register all route definitions
+    // Use GetX to rebuild when theme changes
+    return GetBuilder<ThemeController>(
+      builder: (controller) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'StoreGo',
+          theme: controller.theme,
+          darkTheme: controller.theme, // Let controller determine theme
+          themeMode: controller.themeMode,
+          initialRoute: AppRoutes.onBoarding,
+          getPages: AppPages.pages, // Assuming your routes are set up for GetX
+          defaultTransition: Transition.fade,
+        );
+      },
     );
   }
 }

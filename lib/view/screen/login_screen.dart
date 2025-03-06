@@ -1,4 +1,6 @@
-import 'package:basic_mobile_app/core/constant/theme_constants.dart';
+import 'package:basic_mobile_app/core/routes/routes.dart';
+import 'package:basic_mobile_app/core/theme/color_extension.dart';
+import 'package:basic_mobile_app/view/widget/theme_toggle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:basic_mobile_app/controller/login_controller.dart';
@@ -11,8 +13,13 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Initialize the controller using GetX
     final controller = Get.put(LoginController());
-
+    // Get the app colors from theme extension
+    final colors = Theme.of(context).extension<AppColorExtension>();
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('StoreGo'),
+        actions: const [ThemeToggle()],
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -25,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 const Text(
                   'Login',
-                  style: AppTheme.headingLarge,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 // App logo or header image could go here
                 const SizedBox(height: 24),
@@ -62,19 +69,17 @@ class LoginScreen extends StatelessWidget {
                       onPressed:
                           controller.isLoading.value ? null : controller.login,
                       style: ElevatedButton.styleFrom(
+                        backgroundColor: colors?.primary,
+                        foregroundColor: colors?.primaryForeground,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              AppTheme.globalBorderRadius),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: AppTheme.backgroundColor,
                       ),
                       child: controller.isLoading.value
                           ? const CircularProgressIndicator()
                           : const Text(
                               'Login',
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white),
                             ),
                     )),
                 const SizedBox(height: 16),
@@ -87,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                     const Text("Don't have an account?"),
                     TextButton(
                       onPressed: () {
-                        // Navigate to forgot password screen
+                        Get.toNamed(AppRoutes.register);
                       },
                       child: const Text('Create One'),
                     ),

@@ -1,104 +1,77 @@
-// theme_constants.dart
-// This file contains all UI-related constants to maintain consistent branding throughout the app
-
 import 'package:flutter/material.dart';
 
-class AppTheme {
-  // Primary brand colors
-  static const Color primaryColor = Color(0xFFFFFFFF); // Main brand color
-  static const Color secondaryColor = Color(0xFF191919); // Accent color
-  static const Color backgroundColor = Color(0xFF000000); // Background color
+// Define color tokens in this file
+class AppColors {
+  // Base colors
+  static const background = Color(0xFFFFFFFF);
+  static const foreground = Color(0xFF000000);
 
-  // Text colors
-  static const Color textPrimaryColor = Color(0xFF000000); // Primary text
-  static const Color textSecondaryColor = Color(0xFFC2C2C2); // Secondary text
-  static const Color textLightColor =
-      Color(0xFF000000); // Light text (for dark backgrounds)
+  // Primary colors
+  static const primary = Color(0xFF0070F3);
+  static const primaryForeground = Color(0xFFFFFFFF);
 
-  // input fields
-  static const Color inputBackgroundColor = Color.fromARGB(255, 241, 241, 241);
-  static const Color inputTextColor = Color.fromARGB(255, 129, 129, 129);
-  static const double globalBorderRadius = 50;
-  // Success, warning, error colors
-  static const Color successColor = Color(0xFF4CAF50);
-  static const Color warningColor = Color(0xFFFFC107);
-  static const Color errorColor = Color(0xFFE53935);
+  // Secondary colors
+  static const secondary = Color(0xFFF5F5F5);
+  static const secondaryForeground = Color(0xFF111111);
 
-  // Gradients
-  static const LinearGradient primaryGradient = LinearGradient(
-    colors: [Color(0xFF191919), Color(0xFF000000)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  // Accent colors
+  static const accent = Color(0xFFEC4899);
+  static const accentForeground = Color(0xFFFFFFFF);
 
-  // Text styles
-  // Heading styles - large
-  static const TextStyle headingLarge = TextStyle(
-    fontSize: 28.0,
-    fontWeight: FontWeight.w900,
-    color: textPrimaryColor,
-    fontFamily: 'RedditSans',
-  );
+  // Muted colors
+  static const muted = Color(0xFFF5F5F5);
+  static const mutedForeground = Color(0xFF737373);
 
-  // Heading styles - medium
-  static const TextStyle headingMedium = TextStyle(
-    fontSize: 22.0,
-    fontWeight: FontWeight.w600,
-    color: textPrimaryColor,
-    fontFamily: 'RedditSans',
-  );
+  // Card colors
+  static const card = Color(0xFFFFFFFF);
+  static const cardForeground = Color(0xFF000000);
 
-  // Heading styles - small
-  static const TextStyle headingSmall = TextStyle(
-    fontSize: 18.0,
-    fontWeight: FontWeight.w600,
-    color: textPrimaryColor,
-    fontFamily: 'RedditSans',
-  );
+  // Border color
+  static const border = Color(0xFFE5E5E5);
 
-  // Body styles - large
-  static const TextStyle bodyLarge = TextStyle(
-    fontSize: 16.0,
-    color: textPrimaryColor,
-    fontFamily: 'RedditSans',
-  );
+  // Input color
+  static const input = Color(0xFFE5E5E5);
 
-  // Body styles - medium
-  static const TextStyle bodyMedium = TextStyle(
-    fontSize: 14.0,
-    color: textPrimaryColor,
-    fontFamily: 'RedditSans',
-  );
+  // Destructive action colors
+  static const destructive = Color(0xFFFF0000);
+  static const destructiveForeground = Color(0xFFFFFFFF);
+}
 
-  // Body styles - small
-  static const TextStyle bodySmall = TextStyle(
-    fontSize: 12.0,
-    color: textSecondaryColor,
-    fontFamily: 'RedditSans',
-  );
+// Define color data structure
+class AppColorsData {
+  final Color background;
+  final Color foreground;
+  final Color primary;
+  final Color primaryForeground;
+  final Color secondary;
+  final Color secondaryForeground;
+  final Color accent;
+  final Color accentForeground;
+  final Color muted;
+  final Color mutedForeground;
+  final Color card;
+  final Color cardForeground;
+  final Color border;
+  final Color input;
+  final Color destructive;
+  final Color destructiveForeground;
 
-  // Spacing constants
-  static const double spacingXS = 4.0;
-  static const double spacingS = 8.0;
-  static const double spacingM = 16.0;
-  static const double spacingL = 24.0;
-  static const double spacingXL = 32.0;
-  static const double spacingXXL = 48.0;
-
-  // Shadow
-  static const List<BoxShadow> lightShadow = [
-    BoxShadow(
-      color: Color(0x1A000000),
-      blurRadius: 4,
-      offset: Offset(0, 2),
-    ),
-  ];
-
-  static const List<BoxShadow> mediumShadow = [
-    BoxShadow(
-      color: Color(0x1F000000),
-      blurRadius: 8,
-      offset: Offset(0, 4),
-    ),
-  ];
+  const AppColorsData({
+    required this.background,
+    required this.foreground,
+    required this.primary,
+    required this.primaryForeground,
+    required this.secondary,
+    required this.secondaryForeground,
+    required this.accent,
+    required this.accentForeground,
+    required this.muted,
+    required this.mutedForeground,
+    required this.card,
+    required this.cardForeground,
+    required this.border,
+    required this.input,
+    required this.destructive,
+    required this.destructiveForeground,
+  });
 }

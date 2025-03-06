@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   dio: ^5.4.0  # HTTP client for making API requests
   get: ^4.6.1
+  get_storage: ^2.1.1
+  path_provider: ^2.1.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

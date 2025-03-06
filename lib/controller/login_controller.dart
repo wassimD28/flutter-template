@@ -43,12 +43,11 @@ class LoginController extends GetxController {
 
   // Login function
   Future<void> login() async {
+    // Set loading state
+    isLoading.value = true;
     // Validate form first
     if (formKey.currentState!.validate()) {
       try {
-        // Set loading state
-        isLoading.value = true;
-
         // Simulate network delay
         await Future.delayed(const Duration(seconds: 2));
 

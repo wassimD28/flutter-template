@@ -1,4 +1,5 @@
 import 'package:basic_mobile_app/view/screen/login_screen.dart';
+import 'package:basic_mobile_app/view/screen/register_screen.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:basic_mobile_app/core/routes/routes.dart';
@@ -20,13 +21,15 @@ class AppPages {
       transition: Transition.rightToLeftWithFade,
       transitionDuration: const Duration(milliseconds: 250),
       curve: Curves.fastOutSlowIn,
-    )
-    /*
-    GetPage(
-      name: AppRoutes.signup,
-      page: () => const SignupScreen(),
-      transition: Transition.rightToLeft,
     ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterScreen(),
+      transition: Transition.rightToLeftWithFade,
+      transitionDuration: const Duration(milliseconds: 250),
+      curve: Curves.fastOutSlowIn,
+    ),
+    /*
     GetPage(
       name: AppRoutes.home,
       page: () => const HomeScreen(),
