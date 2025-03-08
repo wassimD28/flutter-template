@@ -1,4 +1,5 @@
 import 'package:basic_mobile_app/controller/register_controller.dart';
+import 'package:basic_mobile_app/view/widget/styled_text.dart';
 import 'package:basic_mobile_app/view/widget/text_input.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,8 +21,7 @@ class RegisterScreen extends StatelessWidget {
             children: [
               const Text(
                 'Register',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
+              ).heading2(context),
               const Text(
                 'Create an account to get started',
                 style: TextStyle(fontSize: 16),
@@ -46,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                 labelText: "Password",
                 validator: controller.validatePassword,
                 keyboardType: TextInputType.visiblePassword,
-              )
+              ),
             ],
           ),
         ),

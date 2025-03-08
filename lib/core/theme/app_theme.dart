@@ -2,6 +2,8 @@ import 'package:basic_mobile_app/core/constant/ui_constants.dart';
 import 'package:flutter/material.dart';
 import '../constant/theme_constants.dart';
 import 'color_extension.dart';
+import '../constant/typography_constants.dart';
+import 'typography_extension.dart';
 
 class AppTheme {
   // Light theme colors
@@ -43,19 +45,215 @@ class AppTheme {
     destructive: Color(0xFFFF0000),
     destructiveForeground: Color(0xFFFFFFFF),
   );
+  // Light theme text styles
+  static const lightTextStyles = AppTextStylesData(
+    h1: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSize3XLarge,
+      fontWeight: AppTypography.bold,
+      letterSpacing: AppTypography.letterSpacingTight,
+      color: Color(0xFF000000),
+    ),
+    h2: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSize2XLarge,
+      fontWeight: AppTypography.bold,
+      letterSpacing: AppTypography.letterSpacingTight,
+      color: Color(0xFF000000),
+    ),
+    h3: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeXLarge,
+      fontWeight: AppTypography.semiBold,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFF000000),
+    ),
+    h4: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeLarge,
+      fontWeight: AppTypography.semiBold,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFF000000),
+    ),
+    h5: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeMedium,
+      fontWeight: AppTypography.semiBold,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFF000000),
+    ),
+    subtitle1: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeMedium,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFF000000),
+    ),
+    subtitle2: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeRegular,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFF000000),
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeMedium,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      height: AppTypography.lineHeightNormal,
+      color: Color(0xFF000000),
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeRegular,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      height: AppTypography.lineHeightNormal,
+      color: Color(0xFF000000),
+    ),
+    bodySmall: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeSmall,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      height: AppTypography.lineHeightNormal,
+      color: Color(0xFF000000),
+    ),
+    buttonText: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeRegular,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingWide,
+      color: Color(0xFF000000),
+    ),
+    caption: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeSmall,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFF737373),
+    ),
+    overline: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeSmall,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingWide,
+      color: Color(0xFF737373),
+      height: 1.5,
+    ),
+  );
+  // Dark theme text styles
+  static const darkTextStyles = AppTextStylesData(
+    h1: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSize3XLarge,
+      fontWeight: AppTypography.bold,
+      letterSpacing: AppTypography.letterSpacingTight,
+      color: Color(0xFFFFFFFF),
+    ),
+    h2: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSize2XLarge,
+      fontWeight: AppTypography.bold,
+      letterSpacing: AppTypography.letterSpacingTight,
+      color: Color(0xFFFFFFFF),
+    ),
+    h3: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeXLarge,
+      fontWeight: AppTypography.semiBold,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    h4: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeLarge,
+      fontWeight: AppTypography.semiBold,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    h5: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeMedium,
+      fontWeight: AppTypography.semiBold,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    subtitle1: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeMedium,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    subtitle2: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeRegular,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeMedium,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      height: AppTypography.lineHeightNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    bodyMedium: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeRegular,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      height: AppTypography.lineHeightNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    bodySmall: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeSmall,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      height: AppTypography.lineHeightNormal,
+      color: Color(0xFFFFFFFF),
+    ),
+    buttonText: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeRegular,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingWide,
+      color: Color(0xFFFFFFFF),
+    ),
+    caption: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeSmall,
+      fontWeight: AppTypography.regular,
+      letterSpacing: AppTypography.letterSpacingNormal,
+      color: Color(0xFFB3B3B3),
+    ),
+    overline: TextStyle(
+      fontFamily: AppTypography.primaryFont,
+      fontSize: UIConstants.fontSizeSmall,
+      fontWeight: AppTypography.medium,
+      letterSpacing: AppTypography.letterSpacingWide,
+      color: Color(0xFF999999),
+      height: 1.5,
+    ),
+  );
 
   // Light theme
   static ThemeData light() {
-    return _createTheme(lightColors);
+    return _createTheme(lightColors, lightTextStyles);
   }
 
   // Dark theme
   static ThemeData dark() {
-    return _createTheme(darkColors);
+    return _createTheme(darkColors, darkTextStyles);
   }
 
   // Helper method to create ThemeData
-  static ThemeData _createTheme(AppColorsData colors) {
+  static ThemeData _createTheme(AppColorsData colors, AppTextStylesData textStyles) {
     return ThemeData(
       brightness: colors.background.computeLuminance() > 0.5
           ? Brightness.light
@@ -132,8 +330,25 @@ class AppTheme {
         ),
       ),
 
+      // Add text theme
+      textTheme: TextTheme(
+        displayLarge: textStyles.h1,
+        displayMedium: textStyles.h2,
+        displaySmall: textStyles.h3,
+        headlineMedium: textStyles.h4,
+        headlineSmall: textStyles.h5,
+        titleLarge: textStyles.subtitle1,
+        titleMedium: textStyles.subtitle2,
+        bodyLarge: textStyles.bodyLarge,
+        bodyMedium: textStyles.bodyMedium,
+        bodySmall: textStyles.bodySmall,
+        labelLarge: textStyles.buttonText,
+        labelSmall: textStyles.overline,
+      ),
+
       extensions: [
         AppColorExtension.fromAppColorsData(colors),
+        AppTypographyExtension.fromAppTextStylesData(textStyles),
       ],
     );
   }
